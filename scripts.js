@@ -1,6 +1,6 @@
 let winNumber = [1, 2, 3, 4, 5, 6];
 let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
-let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 3, 4, 5, 2]];
+let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 2, 4, 5, 6]];
 
 let win = winNumber.map((w, i) => {
   return `<section class="stage">
@@ -44,7 +44,21 @@ let user = userNumbers.map((userNumber, index) => {
       correctCount++;
     }
   }
-  return `<span class="index">` + index + `</span>` + (correctCount == 0 ? `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span></div>` : correctCount == 6 ? `<div class="all-number-container"><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>` : `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>`);
+  return `<div class="user-number-row">
+    <div class="index">` + index + `</div>` + 
+    (correctCount == 0 ?
+      `<div class="all-number-container">
+        <span class="wrong-number-container">` + wrongNumbers.join('') +`</span>
+      </div>` : 
+      correctCount == 6 ? 
+        `<div class="all-number-container">
+          <span class="correct-numbers-container">` + correctNumbers.join('') + `</span>
+        </div>` : 
+        `<div class="all-number-container">
+          <span class="wrong-number-container">` + wrongNumbers.join('') + `</span>
+          <span class="correct-numbers-container">` + correctNumbers.join('') + `</span>
+        </div>
+    </div>`);
 });
-document.getElementById("users").innerHTML = user.join('');
+document.getElementById("user_number_list").innerHTML = user.join('');
 document.getElementById("win_number_container").innerHTML = win.join('');
