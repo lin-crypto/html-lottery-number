@@ -11,7 +11,7 @@ let win = winNumber.map((w, i) => {
     </section>`
 });
 
-let user = userNumbers.map(userNumber => {
+let user = userNumbers.map((userNumber, index) => {
   let wrongNumbers = userNumber.map((number, i) => {
     let matchCount = 0;
 
@@ -44,7 +44,7 @@ let user = userNumbers.map(userNumber => {
       correctCount++;
     }
   }
-  return correctCount == 0 ? `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span></div>` : correctCount == 6 ? `<div class="all-number-container"><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>` : `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>`;
+  return `<span class="index">` + index + `</span>` + (correctCount == 0 ? `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span></div>` : correctCount == 6 ? `<div class="all-number-container"><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>` : `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>`);
 });
 document.getElementById("users").innerHTML = user.join('');
 document.getElementById("win_number_container").innerHTML = win.join('');
