@@ -12,7 +12,7 @@ let win = winNumber.map((w, i) => {
 });
 
 let user = userNumbers.map(userNumber => {
-  let checkedNumber = userNumber.map((number, i) => {
+  let wrongNumbers = userNumber.map((number, i) => {
     let matchCount = 0;
 
     for (let i = 5; i >= 0; i--) {
@@ -22,9 +22,29 @@ let user = userNumbers.map(userNumber => {
         break;
       }
     }
-    return 6 - matchCount > i ? '<span class="user_number unmatched">' + number + '</span>' : '<span class="user_number matched">' + number + '</span>';
+    return 6 - matchCount > i ? '<span class="user_number unmatched">' + number + '<span class="wrong-mark">&#10005;</span></span>' : '';
   });
-  return `<div class="user_number_container">` + checkedNumber.join('') + `</div>`
+
+  let correctNumbers = userNumber.map((number, i) => {
+    let matchCount = 0;
+
+    for (let i = 5; i >= 0; i--) {
+      if (userNumber[i] == winNumber[i]) {
+        matchCount++;
+      } else {
+        break;
+      }
+    }
+    return 6 - matchCount <= i ? '<span class="user_number matched">' + number + '<span class="check-mark">&#10004;</span></span>' : '';
+  });
+
+  let correctCount = 0;
+  for (let i = 0; i < 6; i++) {
+    if (correctNumbers[i] !== '') {
+      correctCount++;
+    }
+  }
+  return correctCount == 0 ? `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span></div>` : correctCount == 6 ? `<div class="all-number-container"><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>` : `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>`;
 });
 document.getElementById("users").innerHTML = user.join('');
 document.getElementById("win_number_container").innerHTML = win.join('');

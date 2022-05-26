@@ -78,19 +78,11 @@ z-index: -1;
   text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
-.user_number_container {
-  background-color: #cccccc;
-  border: 1px solid #aaaaaa;
-  border-radius: 20px;
-  width: fit-content;
-  margin-left: 20px;
-  margin-top: 20px;
-}
-
 .user_number {
   font-size: 32px;
   font-weight: 900;
   padding: 0 33px;
+  position: relative;
 }
 
 .matched {
@@ -99,4 +91,39 @@ z-index: -1;
 
 .unmatched {
   color: #aaaaaa;
+}
+
+.check-mark {
+  position: absolute;
+  top: -30px;
+  left: 35px;
+  color: #00ff00;
+  font-size: 16px;
+}
+
+.wrong-mark {
+  position: absolute;
+  top: -30px;
+  left: 35px;
+  color: #ff0000;
+  font-size: 16px;
+}
+
+.correct-numbers-container {
+  border: 3px solid red;
+  border-radius: 20px;
+  padding-top: 10px;
+}
+
+.wrong-number-container {
+  border: 3px solid #aaaaaa;
+  border-radius: 20px;
+  padding-top: 10px;
+}
+
+.all-number-container {
+  width: fit-content;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
