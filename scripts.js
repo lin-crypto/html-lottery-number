@@ -1,6 +1,6 @@
 let winNumber = [1, 2, 3, 4, 5, 6];
 let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
-let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 2, 4, 5, 2]];
+let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 2, 4, 5, 6]];
 
 let win = winNumber.map((w, i) => {
   return `<section class="stage">
