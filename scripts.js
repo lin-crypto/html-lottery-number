@@ -1,6 +1,6 @@
 let winNumber = [1, 2, 3, 4, 5, 6];
 let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
-let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 2, 4, 5, 6]];
+let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 2, 4, 5, 2]];
 
 let win = winNumber.map((w, i) => {
   return `<section class="stage">
@@ -22,7 +22,7 @@ let user = userNumbers.map((userNumber, index) => {
         break;
       }
     }
-    return 6 - matchCount > i ? '<span class="user_number unmatched">' + number + '<span class="wrong-mark">&#10005;</span></span>' : '';
+    return 6 - matchCount > i ? '<span class="' + (matchCount == 0 ? 'only_one_number' : 'user_number') + ' unmatched">' + number + (userNumber[i] == winNumber[i] ? '<span class="check-mark">&#10004;</span></span>' : '<span class="wrong-mark">&#10005;</span></span>') : '';
   });
 
   let correctNumbers = userNumber.map((number, i) => {
@@ -35,7 +35,7 @@ let user = userNumbers.map((userNumber, index) => {
         break;
       }
     }
-    return 6 - matchCount <= i ? '<span class="user_number matched">' + number + '<span class="check-mark">&#10004;</span></span>' : '';
+    return 6 - matchCount <= i ? '<span class="' + (matchCount == 0 ? 'only_one_number' : 'user_number') + ' matched">' + number + (userNumber[i] == winNumber[i] ? '<span class="check-mark">&#10004;</span></span>' : '<span class="wrong-mark">&#10005;</span></span>') : '';
   });
 
   let correctCount = 0;
@@ -60,5 +60,6 @@ let user = userNumbers.map((userNumber, index) => {
         </div>
     </div>`);
 });
+
 document.getElementById("user_number_list").innerHTML = user.join('');
 document.getElementById("win_number_container").innerHTML = win.join('');
