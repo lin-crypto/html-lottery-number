@@ -1,6 +1,20 @@
 let winNumber = [1, 2, 3, 4, 5, 6];
 let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
 let userNumbers = [[1, 3, 4, 7, 4, 6], [1, 2, 2, 4, 5, 6]];
+let w, h;
+w = document.documentElement.clientWidth;
+h = document.documentElement.clientHeight;
+
+function displayWindowSize(){
+  if(w != document.documentElement.clientWidth || h != document.documentElement.clientHeight) {
+    location.reload();
+    return;
+  }
+  w = document.documentElement.clientWidth;
+  h = document.documentElement.clientHeight;
+}
+  
+window.addEventListener("resize", displayWindowSize);
 
 let win = winNumber.map((w, i) => {
   return `<section class="stage">
@@ -48,15 +62,24 @@ let user = userNumbers.map((userNumber, index) => {
     <div class="index">` + index + `</div>` + 
     (correctCount == 0 ?
       `<div class="all-number-container">
-        <span class="wrong-number-container">` + wrongNumbers.join('') +`</span>
+        <span class="wrong-number-container">
+          <div class="wrong-number-border" style="width: 200px"></div>` + 
+          wrongNumbers.join('') +
+        `</span>
       </div>` : 
       correctCount == 6 ? 
         `<div class="all-number-container">
           <span class="correct-numbers-container">` + correctNumbers.join('') + `</span>
         </div>` : 
         `<div class="all-number-container">
-          <span class="wrong-number-container">` + wrongNumbers.join('') + `</span>
-          <span class="correct-numbers-container">` + correctNumbers.join('') + `</span>
+          <span class="wrong-number-container">
+            <div class="wrong-number-border" style="width: ` + (6 - correctCount) * (w > 768 ? 82 : 27.5) + `px"></div>` + 
+            wrongNumbers.join('') + 
+          `</span>
+          <span class="correct-numbers-container">
+            <div class="correct-number-border" style="width: ` + correctCount * (w > 768 ? 82 : 27.5) + `px"></div>` + 
+            correctNumbers.join('') + 
+          `</span>
         </div>
     </div>`);
 });

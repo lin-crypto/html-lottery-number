@@ -142,15 +142,31 @@ z-index: -1;
   }
 
   .correct-numbers-container {
-    border: 1px solid red;
-    border-radius: 20px;
     padding-top: 10px;
+    position: relative;
   }
 
   .wrong-number-container {
-    border: 1px solid #aaaaaa;
-    border-radius: 20px;
     padding-top: 10px;
+    position: relative;
+  }
+
+  .wrong-number-border {
+    border: 3px solid #aaaaaa;
+    border-radius: 20px;
+    height: 31px;
+    position: absolute;
+    top: -5px;
+    left: 0;
+  }
+
+  .correct-number-border {
+    border: 3px solid #ff0000;
+    border-radius: 20px;
+    height: 31px;
+    position: absolute;
+    top: -5px;
+    left: 0;
   }
 
   .all-number-container {
@@ -183,7 +199,7 @@ z-index: -1;
   .user_number {
     font-size: 14px;
     font-weight: 900;
-    padding: 0 10px;
+    padding: 0 10.7px;
     position: relative;
   }
 
@@ -212,13 +228,31 @@ z-index: -1;
   }
 
   .correct-numbers-container {
-    border: 1px solid red;
-    border-radius: 20px;
+    padding-top: 10px;
+    position: relative;
   }
 
   .wrong-number-container {
+    padding-top: 10px;
+    position: relative;
+  }
+
+  .wrong-number-border {
     border: 1px solid #aaaaaa;
-    border-radius: 20px;
+    border-radius: 10px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    left: 0;
+  }
+
+  .correct-number-border {
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    left: 0;
   }
 
   .all-number-container {
